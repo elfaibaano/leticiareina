@@ -1,0 +1,576 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Leticia's personal portfolio, projects, achievements, skills, and goals.">
+  <title>Leticia | Personal Portfolio</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC"
+    crossorigin="anonymous">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #25243a;
+      --muted: #747286;
+      --purple: #7865a8;
+      --purple-dark: #554477;
+      --lavender: #eeeaf6;
+      --cream: #fbf9f6;
+      --line: #e9e5ee;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--ink);
+      font-family: "DM Sans", sans-serif;
+      line-height: 1.7;
+    }
+    .navbar {
+      background: rgba(251, 249, 246, .94);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--line);
+    }
+    .navbar-brand {
+      color: var(--purple-dark) !important;
+      font-weight: 700;
+      letter-spacing: .08em;
+    }
+    .nav-link {
+      color: var(--muted) !important;
+      font-size: .9rem;
+      margin-left: 1rem;
+    }
+    .nav-link:hover { color: var(--purple-dark) !important; }
+    .hero {
+      padding: 112px 0 90px;
+      background:
+        radial-gradient(circle at 12% 15%, rgba(210, 198, 232, .45), transparent 28%),
+        radial-gradient(circle at 88% 78%, rgba(237, 218, 205, .55), transparent 27%),
+        var(--cream);
+    }
+    .eyebrow {
+      color: var(--purple);
+      font-size: .76rem;
+      font-weight: 700;
+      letter-spacing: .19em;
+      text-transform: uppercase;
+    }
+    h1, h2, h3, .serif { font-family: "Playfair Display", Georgia, serif; }
+    h1 {
+      font-size: clamp(3.5rem, 8vw, 6.6rem);
+      line-height: 1.02;
+      letter-spacing: -.045em;
+      margin: 18px 0;
+    }
+    .hero-copy {
+      max-width: 570px;
+      color: var(--muted);
+      font-size: 1.05rem;
+    }
+    .hero-image-wrap {
+      max-width: 390px;
+      margin: 0 auto;
+      padding: 13px;
+      border: 1px solid #ded6e9;
+      border-radius: 48% 48% 25px 25px;
+      background: rgba(255,255,255,.5);
+      box-shadow: 0 22px 60px rgba(70, 53, 95, .09);
+    }
+    .hero-image {
+      display: block;
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+      border-radius: 48% 48% 18px 18px;
+      background: #e9e4ef;
+    }
+    .btn-lilac {
+      background: var(--purple);
+      color: white;
+      border: 1px solid var(--purple);
+      border-radius: 999px;
+      padding: 12px 24px;
+      font-weight: 600;
+    }
+    .btn-lilac:hover { background: var(--purple-dark); color: white; }
+    .btn-outline-lilac {
+      color: var(--purple-dark);
+      border: 1px solid #c9bfd9;
+      border-radius: 999px;
+      padding: 12px 24px;
+      font-weight: 600;
+    }
+    .btn-outline-lilac:hover { background: var(--lavender); color: var(--purple-dark); }
+    section { padding: 88px 0; }
+    .section-kicker {
+      color: var(--purple);
+      text-transform: uppercase;
+      letter-spacing: .17em;
+      font-size: .72rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(2.2rem, 4vw, 3.35rem);
+      margin-bottom: 18px;
+    }
+    .section-intro { color: var(--muted); max-width: 650px; }
+    .about-panel {
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 34px;
+      height: 100%;
+    }
+    .fact {
+      padding: 17px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+    .fact:last-child { border-bottom: 0; }
+    .fact-number {
+      color: var(--purple);
+      font-weight: 700;
+      margin-right: 10px;
+    }
+    .soft-section { background: #f1eef5; }
+    .goal-card, .project-card, .skill-card {
+      height: 100%;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      padding: 28px;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .project-card:hover, .goal-card:hover, .skill-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 16px 35px rgba(55, 43, 76, .08);
+    }
+    .card-number {
+      color: #a99bc0;
+      font-size: .8rem;
+      font-weight: 700;
+      letter-spacing: .12em;
+    }
+    .project-card h3, .goal-card h3, .skill-card h3 {
+      font-size: 1.45rem;
+      margin: 14px 0 10px;
+    }
+    .project-card p, .goal-card p, .skill-card p { color: var(--muted); margin-bottom: 0; }
+    .tag {
+      display: inline-block;
+      background: var(--lavender);
+      color: var(--purple-dark);
+      border-radius: 999px;
+      padding: 5px 11px;
+      font-size: .75rem;
+      font-weight: 600;
+      margin: 15px 5px 0 0;
+    }
+    .skill-row { margin: 17px 0; }
+    .skill-label {
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      font-size: .9rem;
+      font-weight: 600;
+      margin-bottom: 7px;
+    }
+    .skill-level { color: var(--purple); font-size: .8rem; }
+    .progress {
+      height: 7px;
+      background: #eeeaf3;
+      border-radius: 99px;
+    }
+    .progress-bar { background: #9b88bb; border-radius: 99px; }
+    .language-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding: 13px 0;
+      border-bottom: 1px solid var(--line);
+      color: var(--muted);
+    }
+    .language-item:last-child { border-bottom: 0; }
+    .language-item strong { color: var(--ink); }
+
+    .gallery-card {
+      height: 100%;
+      overflow: hidden;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(55, 43, 76, .04);
+    }
+    .gallery-photo {
+      display: block;
+      width: 100%;
+      height: 245px;
+      object-fit: cover;
+      background: #e9e4ef;
+    }
+    .gallery-caption { padding: 17px 18px 19px; }
+    .gallery-caption h3 { font-family: "DM Sans", sans-serif; font-size: 1rem; font-weight: 700; margin: 0 0 4px; }
+    .gallery-caption p { color: var(--muted); font-size: .85rem; margin: 0; }
+
+    .contact-box {
+      background: var(--purple-dark);
+      color: white;
+      border-radius: 26px;
+      padding: 48px;
+    }
+    .contact-box p { color: #e2dced; }
+    .contact-link {
+      color: white;
+      font-weight: 600;
+      text-decoration: none;
+      overflow-wrap: anywhere;
+    }
+    .contact-link:hover { color: #e3d8f3; }
+    footer {
+      padding: 25px 0;
+      color: var(--muted);
+      font-size: .82rem;
+    }
+    @media (max-width: 767px) {
+      .hero { padding: 85px 0 65px; text-align: center; }
+      .hero-copy { margin-left: auto; margin-right: auto; }
+      .hero-image-wrap { max-width: 300px; margin-top: 42px; }
+      .hero-image { height: 350px; }
+      section { padding: 65px 0; }
+  
+    .gallery-card {
+      height: 100%;
+      overflow: hidden;
+      background: white;
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      box-shadow: 0 8px 24px rgba(55, 43, 76, .04);
+    }
+    .gallery-photo {
+      display: block;
+      width: 100%;
+      height: 245px;
+      object-fit: cover;
+      background: #e9e4ef;
+    }
+    .gallery-caption { padding: 17px 18px 19px; }
+    .gallery-caption h3 { font-family: "DM Sans", sans-serif; font-size: 1rem; font-weight: 700; margin: 0 0 4px; }
+    .gallery-caption p { color: var(--muted); font-size: .85rem; margin: 0; }
+
+    .contact-box { padding: 32px 24px; }
+      .nav-link { margin-left: 0; }
+    }
+  </style>
+</head>
+
+<body>
+  <nav class="navbar navbar-expand-lg navbar-light fixed-top">
+    <div class="container">
+      <a class="navbar-brand" href="#home">LETICIA.</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav"
+        aria-controls="mainNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="mainNav">
+        <ul class="navbar-nav ms-auto align-items-lg-center">
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#goals">Goals</a></li>
+          <li class="nav-item"><a class="nav-link" href="#projects">Achievements</a></li>
+          <li class="nav-item"><a class="nav-link" href="#gallery">Gallery</a></li>
+          <li class="nav-item"><a class="nav-link" href="#skills">Skills</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <header class="hero" id="home">
+      <div class="container">
+        <div class="row align-items-center g-5">
+          <div class="col-lg-7">
+            <p class="eyebrow">A little introduction</p>
+            <h1>Hello,<br>I'm Leticia<span style="color:var(--purple)">.</span></h1>
+            <p class="hero-copy">
+              A curious student, creative thinker, and a junior higschool student who loves learning new things
+              and taking on new challenges.
+            </p>
+            <div class="d-flex flex-wrap gap-3 mt-4 justify-content-center justify-content-lg-start">
+              <a class="btn btn-lilac" href="#projects">Explore my work</a>
+              <a class="btn btn-outline-lilac" href="#contact">Get in touch</a>
+            </div>
+          </div>
+          <div class="col-lg-5">
+            <div class="hero-image-wrap">
+              <!-- Add your own photo by placing its filename in the src attribute, for example src="my-photo.jpg" -->
+              <img class="hero-image" src="leticia.jpeg" alt="Leticia's portrait">
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="container">
+        <div class="row g-4 align-items-stretch">
+          <div class="col-lg-7">
+            <p class="section-kicker">01 / Get to know me</p>
+            <h2 class="section-title">A curious mind with big dreams.</h2>
+            <p class="section-intro">
+              I am a student who enjoys exploring new things, expressing my creativity through art,
+              and participating in school projects. I love learning new languages, trying new experiences,
+              and developing my skills. I am currently working towards my academic goals and preparing
+              for future opportunities.
+            </p>
+          </div>
+          <div class="col-lg-5">
+            <div class="about-panel">
+              <p class="section-kicker mb-2">A few fun facts</p>
+              <div class="fact"><span class="fact-number">01</span> I have joined two cheerleading competitions and achieved 4th place.</div>
+              <div class="fact"><span class="fact-number">02</span> I enjoy drawing, making art, and exploring creative ideas.</div>
+              <div class="fact"><span class="fact-number">03</span> I passed the HSK 2 Chinese language examination.</div>
+              <div class="fact"><span class="fact-number">04</span> I have experience participating in OSIS (student council).</div>
+              <div class="fact"><span class="fact-number">05</span> I dream of studying abroad and exploring different countries.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft-section" id="goals">
+      <div class="container">
+        <p class="section-kicker">02 / Looking ahead</p>
+        <h2 class="section-title">My goals</h2>
+        <p class="section-intro mb-5">Small steps and new experiences help me move closer to the future I imagine.</p>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <div class="goal-card">
+              <span class="card-number">SHORT-TERM</span>
+              <h3>Growing every day</h3>
+              <p>Improve my English and academic skills, get better grades, and complete my school projects successfully.</p>
+            </div>
+          </div>
+          <div class="col-md-6">
+            <div class="goal-card">
+              <span class="card-number">LONG-TERM</span>
+              <h3>Building my future</h3>
+              <p>Graduate from a good university, have the opportunity to study abroad, and become a successful entrepreneur with my own business.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="container">
+        <p class="section-kicker">03 / Things I've done</p>
+        <h2 class="section-title">Projects & achievements</h2>
+        <p class="section-intro mb-5">Every activity has taught me something new and helped me grow.</p>
+        <div class="row g-4">
+          <div class="col-md-6">
+            <article class="project-card">
+              <span class="card-number">01 — EXTRACURRICULAR</span>
+              <h3>Cheerleading competitions</h3>
+              <p>I have participated in two cheerleading competitions and achieved 4th place out of 8 teams. These experiences helped me improve my teamwork, confidence, and performance skills.</p>
+              <span class="tag">4th place</span><span class="tag">Teamwork</span>
+            </article>
+          </div>
+          <div class="col-md-6">
+            <article class="project-card">
+              <span class="card-number">02 — UPCOMING CHALLENGE</span>
+              <h3>Kejurnas & Kejurda 2027</h3>
+              <p>I am preparing for the 2027 national and regional cheerleading competitions. I hope to keep improving my skills while balancing cheerleading with my studies.</p>
+              <span class="tag">2027 goal</span><span class="tag">Cheerleading</span>
+            </article>
+          </div>
+          <div class="col-md-6">
+            <article class="project-card">
+              <span class="card-number">03 — SCHOOL EXPERIENCE</span>
+              <h3>Student council (OSIS)</h3>
+              <p>Being part of OSIS gave me experience working with others, communicating, and taking responsibility in a school environment.</p>
+              <span class="tag">Leadership</span><span class="tag">Communication</span>
+            </article>
+          </div>
+          <div class="col-md-6">
+            <article class="project-card">
+              <span class="card-number">04 — PERSONAL ACHIEVEMENT</span>
+              <h3>HSK 2 Chinese examination</h3>
+              <p>I successfully passed the HSK 2 Chinese language examination. Learning Mandarin has encouraged me to keep exploring languages and different cultures.</p>
+              <span class="tag">HSK 2 passed</span><span class="tag">Mandarin</span>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="soft-section" id="skills">
+      <div class="container">
+        <p class="section-kicker">05 / What I can do</p>
+        <h2 class="section-title">Skills & languages</h2>
+        <p class="section-intro mb-5">These are skills I have been developing through school, creative activities, and extracurricular experiences.</p>
+        <div class="row g-4">
+          <div class="col-lg-6">
+            <div class="skill-card">
+              <h3>Creative & practical skills</h3>
+              <div class="skill-row">
+                <div class="skill-label"><span>Drawing & art</span><span class="skill-level">Intermediate</span></div>
+                <div class="progress"><div class="progress-bar" style="width:65%"></div></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label"><span>Creative presentations & design</span><span class="skill-level">Intermediate</span></div>
+                <div class="progress"><div class="progress-bar" style="width:65%"></div></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label"><span>Performing in front of an audience</span><span class="skill-level">Intermediate</span></div>
+                <div class="progress"><div class="progress-bar" style="width:65%"></div></div>
+              </div>
+              <h3 class="mt-4">Soft skills</h3>
+              <div class="skill-row">
+                <div class="skill-label"><span>Teamwork</span><span class="skill-level">Confident</span></div>
+                <div class="progress"><div class="progress-bar" style="width:85%"></div></div>
+              </div>
+              <div class="skill-row">
+                <div class="skill-label"><span>Leadership & communication</span><span class="skill-level">Intermediate</span></div>
+                <div class="progress"><div class="progress-bar" style="width:65%"></div></div>
+              </div>
+              <div class="skill-row mb-0">
+                <div class="skill-label"><span>Time management & problem-solving</span><span class="skill-level">Intermediate</span></div>
+                <div class="progress"><div class="progress-bar" style="width:65%"></div></div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="skill-card">
+              <h3>Languages spoken</h3>
+              <div class="language-item"><span><strong>Indonesian</strong></span><span>Native</span></div>
+              <div class="language-item"><span><strong>English</strong></span><span>Intermediate</span></div>
+              <div class="language-item"><span><strong>Mandarin Chinese</strong></span><span>Beginner · HSK 2 passed</span></div>
+              <div class="mt-4">
+                <h3>What I enjoy</h3>
+                <p>Creating art, learning languages, cheerleading, presenting ideas, and discovering new experiences.</p>
+                <span class="tag">Creativity</span>
+                <span class="tag">Learning</span>
+                <span class="tag">Teamwork</span>
+                <span class="tag">Curiosity</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+
+    <section class="soft-section" id="gallery">
+      <div class="container">
+        <p class="section-kicker">04 / Moments & memories</p>
+        <h2 class="section-title">My photo gallery</h2>
+        <p class="section-intro mb-5">
+          A collection of certificates, cheerleading memories, and school projects.
+          
+        </p>
+
+        <div class="row g-4">
+          <div class="col-sm-6 col-lg-4">
+            <div class="gallery-card">
+              <img class="gallery-photo" src="osis-certificate.PNG" alt="OSIS Certificate">
+              <div class="gallery-caption">
+                <h3>OSIS Certificate</h3>
+                <p>My student council experience</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4">
+            <div class="gallery-card">
+              <img class="gallery-photo" src="hsk-certificate.jpeg" alt="HSK 2 certificate">
+              <div class="gallery-caption">
+                <h3>HSK 2 Certificate</h3>
+                <p>My Mandarin language achievement</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4">
+            <div class="gallery-card">
+              <img class="gallery-photo" src="cheer-competition-1.jpg" alt="Cheerleading competition photo 1">
+              <div class="gallery-caption">
+                <h3>Cheerleading Competition </h3>
+                <p>A moment from my first competition ( awarding )</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4">
+            <div class="gallery-card">
+              <img class="gallery-photo" src="cheer-competition.PNG" alt="Cheerleading competition photo 2">
+              <div class="gallery-caption">
+                <h3>Team Performance</h3>
+                <p>Working together and giving our best</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-sm-6 col-lg-4">
+            <div class="gallery-card">
+              <img class="gallery-photo" src="cheer-trophy-1.PNG" alt="Cheerleading trophy photo 1">
+              <div class="gallery-caption">
+                <h3>Competition Achievement</h3>
+                <p>Celebrating our 4th-place out of 8 team achievement</p>
+              </div>
+            </div>
+          </div>
+
+
+          <div class="col-sm-6 col-lg-4">
+            <div class="gallery-card">
+              <img class="gallery-photo" src="school-project.jpeg" alt="School project photo">
+              <div class="gallery-caption">
+                <h3>School Project</h3>
+                <p>A project I worked on at school</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="container">
+        <div class="contact-box text-center">
+          <p class="section-kicker" style="color:#d8cbea">06 / Say hello</p>
+          <h2 class="section-title text-white">Let's connect.</h2>
+          <p class="mx-auto mb-4" style="max-width:520px">
+            Thank you for visiting my portfolio. Feel free to contact me through my school email.
+          </p>
+          <a class="contact-link" href="mailto:leticia.reina.guyana@harapanprestasi.sch.id">
+            leticia.reina.guyana@harapanprestasi.sch.id
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container d-flex flex-column flex-md-row justify-content-between align-items-center gap-2">
+      <span>© 2026 Leticia. Personal Portfolio.</span>
+      <span>Made with creativity and curiosity.</span>
+    </div>
+  </footer>
+
+  <!-- Bootstrap Bundle with Popper -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+    crossorigin="anonymous"></script>
+</body>
+</html>
